@@ -4,6 +4,7 @@ import Rating from "./Rating";
 import { useState } from "react";
 import { useContext } from "react";
 import { MovieContext } from "../context";
+import { toast } from "react-toastify";
 
 export default function MovieCard({ movie }) {
   const [showModal, setShowModal] = useState(false);
@@ -20,9 +21,11 @@ export default function MovieCard({ movie }) {
    
     if (!found) {
       setCartData([...cartData, movie]);
+      toast.success(`The movie ${movie.title} has been Added to the Cart!`);
     }else{
-      console.error(`The movie ${movie.title} has been Added to the Cart Already!`);
+      toast.error(`The movie ${movie.title} has been Added to the Cart Already!`);
     }
+    
   }
 
  function handleModalClose(){

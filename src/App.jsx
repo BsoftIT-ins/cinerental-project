@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { MovieContext, ThemeContext } from "./assets/context/index";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./index.css";
 import Page from "./Page";
@@ -13,6 +15,7 @@ function App() {
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       <MovieContext.Provider value={{ cartData, setCartData }}>
         <Page />
+        <ToastContainer />
       </MovieContext.Provider>
       </ThemeContext.Provider>
     </>

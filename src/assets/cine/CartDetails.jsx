@@ -3,6 +3,7 @@ import { MovieContext } from "../context/index";
 import Delete from "../icons/delete.svg";
 import Checkout from "../icons/checkout.svg";
 import { getImgUrl } from "../utils/cine-utility";
+import { toast } from "react-toastify";
 
 
 export default function CartDetails({ onClose }) {
@@ -14,6 +15,7 @@ export default function CartDetails({ onClose }) {
   function handleRemoveItem(id) {
     // Remove the item from the cartData array
     setCartData((prevCartData) => prevCartData.filter((item) => item.id !== id));
+    toast.success(`The movie has been removed from the cart!`);
   }
   
 
@@ -24,7 +26,7 @@ export default function CartDetails({ onClose }) {
           <h2 className="text-2xl lg:text-[30px] mb-10 font-bold">Your Cart</h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
             {cartData.length === 0 ? ( // Handle empty cart case
-              <p>Your cart is empty.</p>
+              <p className="text-4xl font-bold">Your cart is empty.</p>
             ) : (
               cartData.map((item) => (
                 <div key={item.id} className="grid grid-cols-[1fr_auto] gap-4">
